@@ -13,7 +13,7 @@ export default defineConfig({
         changeOrigin: true,
       },
       '/socket.io': {
-        target: 'http://localhost:1000-', // Local testing ke liye
+        target: 'http://localhost:10000', // Local testing ke liye
         ws: true,
         changeOrigin: true,
       },
