@@ -2,8 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  // Yahan fastRefresh ko production me force-disable karne ke liye mode check kar sakte hain
-  plugins: [react({ fastRefresh: process.env.NODE_ENV !== 'production' })],
+  plugins: [react()],
   server: {
     host: '0.0.0.0',
     allowedHosts: true, 
