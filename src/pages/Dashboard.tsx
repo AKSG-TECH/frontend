@@ -42,10 +42,11 @@ export const Dashboard: React.FC = () => {
   useEffect(() => {
     fetchSessions();
 
-    // Initialize Socket.IO connection
-    // In dev: proxies via Vite, In prod: relative paths through Nginx
-    const socket = io('/', {
-      transports: ['websocket'],
+    // ✅ FIXED: Relative '/' hata kar direct backend URL map kar diya hai
+    const socket = io('https://open-wa-backent-1.onrender.com', {
+      transports: ['websocket', 'polling'],
+      secure: true,
+      withCredentials: true
     });
 
     socket.on('connect', () => {
@@ -299,7 +300,6 @@ export const Dashboard: React.FC = () => {
               onClick={() => setActiveQrSession(null)}
               className="absolute top-4 right-4 p-2 text-dark-400 hover:text-dark-100 hover:bg-dark-800 rounded-lg transition"
             >
-              <Trash2 className="hidden" /> {/* Temp ref */}
               <X className="h-5 w-5" />
             </button>
 
