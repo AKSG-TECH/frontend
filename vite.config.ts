@@ -5,23 +5,28 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0',
-    allowedHosts: true, // Ye line add karo
+    allowedHosts: true, 
+    // Render standard ports use karta hai (jaise 10000)
     port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
     proxy: {
       '/api': {
-        target: 'https://frontend-fsvp.onrender.com/',
+        // Yahan aapke BACKEND ka URL aayega
+        target: 'https://open-wa-backent-1.onrender.com',
         changeOrigin: true,
+        secure: false,
       },
       '/socket.io': {
-        target: 'https://frontend-fsvp.onrender.com/',
+        // Socket ke liye bhi BACKEND ka URL
+        target: 'https://open-wa-backent-1.onrender.com',
         ws: true,
         changeOrigin: true,
+        secure: false,
       },
     },
   },
   preview: {
     host: '0.0.0.0',
-    allowedHosts: true, // Optional
+    allowedHosts: true, 
     port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
   }
 })
