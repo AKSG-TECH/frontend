@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '',
+  // Yahan aapke live backend ka URL aayega
+  baseURL: 'https://open-wa-backent-1.onrender.com',
 });
 
 api.interceptors.request.use(
